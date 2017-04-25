@@ -6,21 +6,21 @@ let router = express.Router();
 let usersController = require('../controllers/users.controller');
 
 // GET /login - render the login view
-router.get('/users/login', (req, res, next)=>{
+router.get('/login', (req, res, next)=>{
   usersController.DisplayLogin(req, res);
   // POST /login - process the login attempt
-}).post('/users/login', usersController.ProcessLogin());
+}).post('/login', usersController.ProcessLogin());
 
 // GET /register - render the registration view
-router.get('/users/register', (req, res, next)=>{
+router.get('/register', (req, res, next)=>{
    usersController.DisplayRegistration(req, res);
-}).post('/users/register', (req, res, next)=>{
+}).post('/register', (req, res, next)=>{
   // POST / register - process the registration submission
   usersController.ProcessRegistration(req, res);
 });
 
 // GET /logout - process the logout request
-router.get('/users/logout', (req, res, next)=>{
+router.get('/logout', (req, res, next)=>{
   usersController.ProcessLogout(req, res);
 });
 

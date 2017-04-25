@@ -25,7 +25,7 @@ module.exports.DisplayLogin = (req, res) => {
 module.exports.ProcessLogin = () => {
   return passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login',
+  failureRedirect: '/user/login',
   failureFlash: true
 })
 }
@@ -87,14 +87,14 @@ module.exports.ProcessLogout = (req, res) => {
 module.exports.RequireAuth = (req, res, next) => {
   // check if the user is logged in
   if(!req.isAuthenticated()) {
-    return res.redirect('/users/login');
+    return res.redirect('/user/login');
   }
   next();
 }
 
 module.exports.RequireAdminAuth = (req, res, next) => {
   if(!req.isAuthenticated()) {
-    return res.redirect('/users/login');
+    return res.redirect('/user/login');
   }
   else if (req.user.level != "Admin"){
      return res.redirect('/');

@@ -1,0 +1,47 @@
+<% include ../partials/header.ejs %>
+
+<!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <h3>Survey List </h3>
+          <a href="/survey/create" class="btn btn-primary"><i class="fa fa-plus"></i> Add a Survey</a>
+          <br>
+          <table class="table table-bordered table-striped table-hover">
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Date Start</th>
+              <th class="text-center">Date End</th>
+              <th class="text-center">Enabled</th>
+              <th class="text-center">Questions</th>
+              <th class="text-center">Respondents</th>
+              <th class="text-center">Edit</th>
+              <th class="text-center">Remove</th>
+            </tr>
+            <!-- Template Row -->
+            <% for (let count = 0; count < surveys.length; count++) { %>
+            <tr>
+              <td class="text-center"><%= surveys[count].name %></td>
+              <td class="text-center"><%= surveys[count].startDate %></td>
+              <td class="text-center"><%= surveys[count].endDate %></td>
+              <td class="text-center"><%= surveys[count].enabled %></td>
+              <td class="text-center"><%= surveys[count].questionsNumber %></td>
+              <td class="text-center"><%= surveys[count].respondents %></td>
+              <td class="text-center">
+              <a href="/survey/<%= surveys[count]._id %>" class="btn btn-primary">
+              <i class="fa fa-pencil-square-o"></i> Edit</a>
+               </td>
+              <td class="text-center">
+              <a href="/survey/delete/<%= surveys[count]._id %>" class="btn btn-danger">
+              <i class="fa fa-trash-o"></i> Delete</a>
+              </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
+
+

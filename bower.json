@@ -1,6 +1,6 @@
 {
-  "name": "comp308-w2017-lab2",
-  "description": "## Lab 2 Authentication with Passport",
+  "name": "comp308-w2017-project",
+  "description": "## Survey Site Project",
   "main": "server.js",
   "authors": [
     "Matthew Yaworski"
@@ -11,7 +11,7 @@
     "ExpressJS",
     "EJS"
   ],
-  "homepage": "https://github.com/Vyred/Comp308-w2017-Lab2",
+  "homepage": "https://github.com/Vyred/Comp308-w2017-project",
   "ignore": [
     "**/.*",
     "node_modules",

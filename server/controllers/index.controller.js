@@ -1,7 +1,7 @@
 // Display the Home Page
 module.exports.DisplayHome = (req, res) => {
   res.render('content/index', {
-    title: 'Home',
+    title: 'Swift Surv',
     surveys: '',
     displayName: req.user ? req.user.username : ''
    });

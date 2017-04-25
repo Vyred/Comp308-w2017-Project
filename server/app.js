@@ -47,7 +47,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client')));
-
+app.use(express.static(path.join(__dirname, '../node_modules')));
 // setup session
 app.use(session({
   secret: "SomeSecret",
@@ -62,8 +62,8 @@ app.use(passport.session());
 
 // route redirects
 app.use('/', index);
-app.use('/surveys', surveys);
-app.use('/users', users);
+app.use('/survey', surveys);
+app.use('/user', users);
 // Passport User Configuration
 let UserModel = require('./models/users');
 let User = UserModel.User; // alias for the User Model - User object

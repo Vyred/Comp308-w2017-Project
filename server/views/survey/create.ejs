@@ -1,0 +1,140 @@
+<% include ../partials/header.ejs %>
+
+
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <h1>
+                    <%= title %>
+                </h1>
+                <form class="form" method="post" id="mainForm">
+                    <div class="form-group">
+                        <label for="NameTextField">Name</label>
+                        <input type="text" class="form-control" id="NameTextField" placeholder="Survey Name" name="name" value="<%= surveys.name %>"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDateTextField">Start Date</label>
+                        <input type="date" id="startDateTextField" placeholder="Survey Start Date" name="startDate" style="color: #000000;" value="<%= surveys.startDate %>"
+                            required>
+                        <input type="time" id="startTimeTextField" placeholder="Survey Start Date" name="startDate" style="color: #000000;" value="<%= surveys.startTime %>"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="EndDateTextField">End Date</label>
+                        <input type="date" id="EndDateTextField" placeholder="Survey End Date" name="endDate" style="color: #000000;" value="<%= surveys.endDate %>"
+                            required>
+                        <input type="time" id="EndTimeTextField" placeholder="Survey End Date" name="endDate" style="color: #000000;" value="<%= surveys.endTime %>"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="questionsNumberTextField">Questions</label>
+                        <input type="number" class="form-control" id="questionsNumberTextField" placeholder="Number of Questions" name="questionsNumber"
+                            required>
+                    </div>
+                    <input value="Set Number of Questions" type="button" id="questionsNumberButton" onclick="questionCountChange();" style="color: #000000;">
+
+                    </br>
+                    </br>
+
+                    <div id="generateQuestion">
+
+                    </div>
+
+                    </br>
+
+                    
+
+
+                    <create>loading...</create>
+
+                    <script>
+                        let numberOfQuestions = document.getElementById("questionsNumberTextField");
+                        let numberOfQuestionsValue = numberOfQuestions.value;
+                        let questionGenerationSection = document.getElementById("generateQuestion");
+                        let counter = 0;
+                        let removalCounter = 0;
+
+                        function questionCountChange() {
+                            numberOfQuestionsValue = document.getElementById("questionsNumberTextField").value;
+
+                            // document.getElementById("generateQuestion").innerHTML = numberOfQuestions;
+                            if (numberOfQuestionsValue < 1) {
+                                //questionGenerationSection.innerHTML = "";
+                                document.getElementById("generateQuestion").innerHTML = '<p>No Questions Yet</p>';
+                            } else if (numberOfQuestionsValue >= 1 && numberOfQuestionsValue <= 100) {
+                                document.getElementById("generateQuestion").innerHTML = "";
+                                counter = 0;
+                                while (counter < (+numberOfQuestionsValue + +removalCounter)) {
+
+
+                                    document.getElementById("generateQuestion").innerHTML +=
+                                        '<div id="questionDiv' + counter + '">'
+                                        + '<label for=" "> Question : </label>'
+                                        + '  <input type="text"  id="question' + counter + '" placeholder="Question" name="questions" style="color: #000000;" value="">'
+                                        + '  <input style="color: #000000;" type="button" id="counter" data-multiChoiceId = "questionDiv' + counter + '" data-multiChoiceCounter = ' + counter + '  name="addOption" onclick="addMultipleChoice(this)" value=" + ">'
+                                        + '  <input style="color: #000000;" type="button" id="counter" data-multiChoiceId = "questionDiv' + counter + '"  name="removeOption" data onclick="removeQuestion(this)" value=" remove ">'
+                                        + '<div id="multiDiv' + counter + '" > '
+                                        + '</div>'
+                                        + '<div>'
+                                        + '<label >Multiple Choice :  </label>'
+                                        + '<input type="text"  id="multipleChoicemultiDiv' + counter + '" placeholder="Multiple Choice Answer" name="questions" style="color: #000000;" value="">'
+                                        + '</div>'
+                                        + '<div>'
+                                        + '<label >Multiple Choice :  </label>'
+                                        + '<input type="text"  id="multipleChoicemultiDiv' + counter + '" placeholder="Multiple Choice Answer" name="questions" style="color: #000000;" value="">'
+                                        + '</div>'
+                                        + '<div>'
+                                        + '<label >Multiple Choice :  </label>'
+                                        + '<input type="text"  id="multipleChoicemultiDiv' + counter + '" placeholder="Multiple Choice Answer" name="questions" style="color: #000000;" value=""'
+                                        + '</div>'
+                                        + '<div>'
+                                        + '<label >Multiple Choice :  </label>'
+                                        + '<input type="text"  id="multipleChoicemultiDiv' + counter + '" placeholder="Multiple Choice Answer" name="questions" style="color: #000000;" value="">'
+                                        + '</div>'
+                                        + '</div>'
+                                        + '<input type="hidden" name ="questions" value ="*|`~~`|*" >'
+                                        + '</br>';
+                                    counter++;
+                                }
+                            }
+                        }
+
+
+                        function addMultipleChoice(param) {
+                            let concatId = param.getAttribute('data-multiChoiceId');
+                            let questionNumber = (param.getAttribute('data-multiChoiceCounter'));
+                            document.getElementById(concatId).innerHTML +=
+                                '<div>'
+                                + '<label> Multiple Choice  : </label>'
+                                + '<input type="text"  id="multipleChoice" placeholder="Multiple Choice Answer" name="questions" value="" style="color: #000000;">'
+                                + '</div>';
+
+                        }
+                        function removeQuestion(param) {
+                            let concatId = param.getAttribute('data-multiChoiceId');
+                            document.getElementById(concatId).remove();
+                            let index = questionIds.indexof(concatId);
+                            questionsId.splice(pos, index);
+                            removalCounter++;
+                        }
+
+                        function submitForm() {
+                            document.getElementById("mainForm").submit();
+                        }
+                    </script>
+
+
+                    </br>
+                    </br>
+                    <button type="button" class="btn btn-primary" onclick="submitForm();"><i class="fa fa-check-square-o" ></i> Submit</button>
+                    <a href="/survey" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/angular.ejs %>
+        <% include ../partials/footer.ejs %>

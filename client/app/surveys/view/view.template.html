@@ -1,0 +1,13 @@
+<section *ngIf=" && survey.creator">
+	<h1>{{survey.name}}</h1>
+
+	<div *ngIf="allowEdit">
+	    <a [routerLink]="['/survey', survey._id, 'edit']">edit</a>
+	    <button (click)="delete()">delete</button>
+	</div>
+	<small>
+	   
+	</small>
+
+	<p>{{surveys.description}}</p>
+</section>

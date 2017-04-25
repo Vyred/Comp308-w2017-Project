@@ -6,31 +6,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>
     <%= title %>
   </title>
   <!-- CSS SECTION -->
   <style type="text/css">
     .auto-style4 {
-      border: 1px solid #333333;
+      border: 1px solid #999999;
       background-color: #000000;
     }
     
     .auto-style5 {
       border-style: solid;
-      border-color: #000000;
+      border-color: #999999;
       background-color: #CCCCCC;
     }
     
     .auto-style6 {
       border-style: solid;
-      border-color: #000000;
+      border-color: #999999;
       background-color: #C0C0C0;
     }
     
     .auto-style7 {
       border-style: solid;
-      border-color: #000000;
+      border-color: #999999;
       background-color: #000000;
     }
   </style>
@@ -39,12 +40,13 @@
   <link rel="stylesheet" href="/Scripts/lib/bootstrap/dist/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/Scripts/lib/font-awesome/css/font-awesome.min.css">
   <link rel='stylesheet' href='/Content/app.css' />
-</head>
+
 </head>
 
-<body style="font-family:Arial; color: 746C43 ; background-color:black;">
 
-  <nav class="navbar navbar-inverse" role="navigation">
+<body style="font-family:Arial; color: #44ee44 ; background-color:#000000;" background="/Content/images/backgrounde.png">
+
+  <nav style="background:#000000; font-family:Arial; color: #44ee44" class="navbar navbar-inverse" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -53,43 +55,50 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-fort-awesome"></i> Porfolio</a>
+      <a class="navbar-brand" href="/">Swift Surv</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <% if(title == "Homepage") { %>
-          <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+
+        <% if(title == "About") { %>
+          <li class="active"><a href="/about"> About</a></li>
           <% } else { %>
-            <li><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
+            <li><a href="/about">About</a></li>
             <% } %>
-              <% if(title == "About") { %>
-                <li class="active"><a href="/about"><i class="fa fa-info fa-lg"></i> About</a></li>
+
+              <% if(title == "Create Survey") { %>
+                <li class="active"><a href="/survey/create"> Create Survey</a></li>
                 <% } else { %>
-                  <li><a href="/about"><i class="fa fa-info fa-lg"></i> About</a></li>
+                  <li><a href="/survey/create">Create Survey</a></li>
                   <% } %>
+
                     <% if(title == "Survey Me") { %>
-                      <li class="active"><a href="/surveys/me"><i class="fa fa-phone fa-lg"></i> Survey Me</a></li>
+                      <li class="active"><a href="/survey/me">Survey Me</a></li>
                       <% } else { %>
-                        <li><a href="/surveys/me"><i class="fa fa-phone fa-lg"></i> Survey</a></li>
+                        <li><a href="/survey/me">Survey</a></li>
                         <% } %>
 
-                                <% if(title == "Survey") { %>
-                                  <li class="active"><a href="/surveys"><i class="fa fa-phone fa-lg"></i> Survey</a></li>
-                                  <% } else { %>
-                                    <li><a href="/surveys"><i class="fa fa-phone fa-lg"></i>Surveys</a></li>
-                                    <% } %>
+                          <% if(title == "Your Surveys") { %>
+                            <li class="active">
+                              <a href="/survey"></i> Survey</a>
+                            </li>
+                            <% } else { %>
+                              <li><a href="/survey">Surveys</a></li>
+                              <% } %>
 
-                                      <% if(typeof displayName == 'string' && displayName) { %>
-                                        <li class="navbar-text"><i class="fa fa-user"></i> Welcome,
-                                          <%= displayName %>
-                                        </li>
-                                        <li><a href="/users/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
-                                        <% } else { %>
-                                          <li><a href="/users/login"><i class="fa fa-sign-in"></i> Login</a></li>
-                                          <% } %>
+                                <% if(typeof displayName == 'string' && displayName) { %>
+                                  <li class="navbar-text">Welcome,
+                                    <%= displayName %>
+                                  </li>
+                                  <li><a href="/user/logout"> Logout</a></li>
+                                  <% } else { %>
+                                    <li><a href="/user/login">Login</a></li>
+                                    <% } %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
   </nav>
+  <div>
+    <img src="/Content/images/banner.bmp">

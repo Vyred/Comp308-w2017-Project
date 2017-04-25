@@ -1,0 +1,12 @@
+<h1>Surveys</h1>
+ <ul>
+   <li *ngFor="let survey of surveys">
+     <a [routerLink]="['/survey', surveys._id]">{{surveys.name}}</a>
+     <br>
+     <small>{{surveys.type}}/{{surveys.description}</small>
+   </li>
+ </ul>
+
+ <div $*ngIf="surveys && surveys.length ===0">
+   No Surveys Yet
+ </div>
